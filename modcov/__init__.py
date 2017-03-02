@@ -3,7 +3,6 @@
 """Use coverage data to check every module's code coverage."""
 from __future__ import print_function, division
 
-import sys
 import argparse
 import subprocess
 
@@ -71,11 +70,12 @@ def _is_skip(exclude, fn):
 
 
 def main():
+    """Run this tool and returns True if everything is ok."""
     ns = parse_cmd()
 
     if ns.version:
         print(__version__)
-        sys.exit(0)
+        return True
 
     cov = coverage.Coverage(ns.data_file, config_file=ns.config_file)
     cov.load()
@@ -87,7 +87,7 @@ def main():
     else:
         if ns.modules is None:
             print("Please specify modules")
-            sys.exit(1)
+            return False
 
         modules = ns.modules.split(",")
 
@@ -108,4 +108,6 @@ def main():
             print("%.1f/0\tPASSED" % covered)
 
     if failed_list:
-        sys.exit(2)
+        return False
+
+    return True
