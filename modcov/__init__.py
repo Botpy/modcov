@@ -82,6 +82,12 @@ def main():
 
     failed_list = []
 
+    cov_exclude = cov.get_option("run:omit")
+    if ns.exclude:
+        exclude = ",".join(cov_exclude, ns.exclude)
+    else:
+        exclude = cov_exclude
+
     if ns.git:
         modules = get_changed_files()
     else:
@@ -92,7 +98,7 @@ def main():
         modules = ns.modules.split(",")
 
     for mod in modules:
-        if ns.exclude and _is_skip(ns.exclude, mod):
+        if exclude and _is_skip(exclude, mod):
             continue
 
         print("Measurementing coverage on", mod, end="\t...\t")
