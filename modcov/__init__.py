@@ -61,8 +61,8 @@ def get_changed_files():
     return result
 
 
-def _is_skip(exclude, fn):
-    for p in exclude.split(","):
+def _is_skip(excludes, fn):
+    for p in excludes:
         if fnmatch.fnmatch(fn, p):
             return True
 
@@ -84,9 +84,9 @@ def main():
 
     cov_exclude = cov.get_option("run:omit")
     if ns.exclude:
-        exclude = ",".join([cov_exclude, ns.exclude])
+        excludes = cov_exclude + ns.exclude.split(",")
     else:
-        exclude = cov_exclude
+        excludes = cov_exclude
 
     if ns.git:
         modules = get_changed_files()
@@ -98,7 +98,7 @@ def main():
         modules = ns.modules.split(",")
 
     for mod in modules:
-        if exclude and _is_skip(exclude, mod):
+        if excludes and _is_skip(excludes, mod):
             continue
 
         print("Measurementing coverage on", mod, end="\t...\t")
