@@ -16,6 +16,8 @@ $ pip install -U modcov
 
 ## Example
 
+After tests & measurement code coverage:
+
 ```shell
 $ modcov --fail-under=75 pkg/handler/demo.py
 ```
