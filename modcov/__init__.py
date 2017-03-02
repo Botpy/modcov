@@ -84,7 +84,7 @@ def main():
 
     cov_exclude = cov.get_option("run:omit")
     if ns.exclude:
-        exclude = ",".join(cov_exclude, ns.exclude)
+        exclude = ",".join([cov_exclude, ns.exclude])
     else:
         exclude = cov_exclude
 
