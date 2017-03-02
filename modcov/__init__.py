@@ -107,12 +107,19 @@ def run():
 
         covered = cov.report(mod, file=buf)
 
-        if ns.fail_under and covered < float(ns.fail_under):
-            print("%.1f/%.1f\tFAILED" % (covered, float(ns.fail_under)))
+        if ns.fail_under:
+            fail_under = float(ns.fail_under)
+        else:
+            fail_under = 0
+
+        print("%.1f/%.1f" % (covered, fail_under), end="\t")
+
+        if fail_under and covered < fail_under:
+            print("FAILED")
             failed_list.append(mod)
             print(buf.getvalue())
         else:
-            print("%.1f/0\tPASSED" % covered)
+            print("PASSED")
 
     if failed_list:
         return False
