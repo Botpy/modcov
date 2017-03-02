@@ -13,6 +13,8 @@ from cStringIO import StringIO
 
 import coverage
 
+__version__ = "0.0.1"
+
 
 def parse_cmd():
     """Parse command line arguments"""
@@ -39,6 +41,9 @@ def parse_cmd():
                         metavar="MIN",
                         help="Exit with status of 2 if any module's coverage "
                         "is less than MIN")
+    parser.add_argument("-v", "--version", action="store_const", const=True,
+                        default=False,
+                        help="Print version number and exit")
     return parser.parse_args()
 
 
@@ -68,7 +73,12 @@ def _is_skip(exclude, fn):
 def main():
     ns = parse_cmd()
 
+    if ns.version:
+        print(__version__)
+        sys.exit(0)
+
     cov = coverage.Coverage(ns.data_file, config_file=ns.config_file)
+    cov.load()
 
     failed_list = []
 
