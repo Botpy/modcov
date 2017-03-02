@@ -3,6 +3,7 @@
 """Use coverage data to check every module's code coverage."""
 from __future__ import print_function, division
 
+import sys
 import argparse
 import subprocess
 
@@ -69,7 +70,7 @@ def _is_skip(excludes, fn):
     return False
 
 
-def main():
+def run():
     """Run this tool and returns True if everything is ok."""
     ns = parse_cmd()
 
@@ -117,3 +118,8 @@ def main():
         return False
 
     return True
+
+
+def main():
+    if not run():
+        sys.exit(2)
