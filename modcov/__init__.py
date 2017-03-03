@@ -3,6 +3,7 @@
 """Use coverage data to check every module's code coverage."""
 from __future__ import print_function, division
 
+import os
 import sys
 import argparse
 import subprocess
@@ -70,6 +71,11 @@ def _is_skip(excludes, fn):
     return False
 
 
+def _is_empty(fn):
+    """Returns True if the file is empty"""
+    return os.stat(fn).st_size == 0
+
+
 def run():
     """Run this tool and returns True if everything is ok."""
     ns = parse_cmd()
@@ -99,6 +105,9 @@ def run():
         modules = ns.modules.split(",")
 
     for mod in modules:
+        if _is_empty(mod):
+            continue
+
         if excludes and _is_skip(excludes, mod):
             continue
 
