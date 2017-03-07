@@ -1,7 +1,7 @@
 # https://travis-ci.org/tornadoweb/tornado
 language: python
 python:
-    - 3.5
+    - 3.6
 
 env:
     - TOXENV=py27
@@ -15,3 +15,9 @@ install:
     - pip install tox
 
 script: tox
+
+matrix:
+  include:
+      - python: 3.5
+        env:
+            - TOXENV=py35
