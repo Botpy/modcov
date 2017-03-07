@@ -45,7 +45,7 @@ def parse_cmd():
     parser.add_argument("-v", "--version", action="store_const", const=True,
                         default=False,
                         help="Print version number and exit")
-    return parser.parse_args()
+    return parser
 
 
 def get_changed_files():
@@ -76,10 +76,11 @@ def _is_empty(fn):
     return os.stat(fn).st_size == 0
 
 
-def run():
-    """Run this tool and returns True if everything is ok."""
-    ns = parse_cmd()
+def run(ns):
+    """Run this tool and returns True if everything is ok.
 
+    :type ns: :class:`argparse.Namespace`
+    """
     if ns.version:
         print(__version__)
         return True
@@ -89,7 +90,7 @@ def run():
 
     failed_list = []
 
-    cov_exclude = cov.get_option("run:omit")
+    cov_exclude = cov.get_option("run:omit") or []
     if ns.exclude:
         excludes = cov_exclude + ns.exclude.split(",")
     else:
@@ -137,5 +138,6 @@ def run():
 
 
 def main():
-    if not run():
+    parser = parse_cmd()
+    if not run(parser.parse_args()):
         sys.exit(2)
