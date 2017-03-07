@@ -10,7 +10,10 @@ import subprocess
 
 import fnmatch
 
-from cStringIO import StringIO
+try:
+    from cStringIO import StringIO
+except ImportError:
+    from io import StringIO
 
 import coverage
 
