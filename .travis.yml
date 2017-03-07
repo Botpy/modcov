@@ -1,7 +1,7 @@
 # https://travis-ci.org/tornadoweb/tornado
 language: python
 python:
-    - 3.6
+    - 3.5
 
 env:
     - TOXENV=py27
