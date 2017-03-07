@@ -50,16 +50,16 @@ class ModcovTestCase(unittest.TestCase):
         ns = self.parser.parse_args(["modcov/__init__.py",
                                      "--data-file", self.data_file_path])
         run(ns)
-        print(self.out.getvalue())
-        self.assertIn("57.1/0.0\tPASSED", self.out.getvalue())
+        self.assertIn("/0.0\tPASSED", self.out.getvalue())
+        self.assertNotIn("0.0/0.0\tPASSED", self.out.getvalue())
 
     def test_fail_under(self):
         ns = self.parser.parse_args(["modcov/__init__.py",
                                      "--fail-under", "75",
                                      "--data-file", self.data_file_path])
         run(ns)
-        print(self.out.getvalue())
-        self.assertIn("57.1/75.0\tFAILED", self.out.getvalue())
+        self.assertIn("/75.0\tFAILED", self.out.getvalue())
+        self.assertNotIn("0.0/75.0\tFAILED", self.out.getvalue())
 
     def test_exclude(self):
         ns = self.parser.parse_args(["modcov/__init__.py",
