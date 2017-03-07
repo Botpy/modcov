@@ -16,6 +16,8 @@ import mock
 
 from modcov import parse_cmd, run, __version__
 
+# pylint: disable=C0111
+
 
 class ModcovTestCase(unittest.TestCase):
     def setUp(self):
