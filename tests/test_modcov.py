@@ -71,7 +71,7 @@ class ModcovTestCase(unittest.TestCase):
 
     def test_git(self):
         with mock.patch("modcov.subprocess.check_output") as output:
-            output.return_value = "modcov/__init__.py"
+            output.return_value = b"modcov/__init__.py"
             ns = self.parser.parse_args(["--git",
                                          "--fail-under", "75",
                                          "--data-file", self.data_file_path])

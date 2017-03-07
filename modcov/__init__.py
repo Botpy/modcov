@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 """Use coverage data to check every module's code coverage."""
-from __future__ import print_function, division
+from __future__ import print_function, division, unicode_literals
 
 import os
 import sys
@@ -60,8 +60,8 @@ def get_changed_files():
     result = []
 
     for fn in out.splitlines():
-        if fn.endswith(".py"):
-            result.append(fn)
+        if fn.endswith(b".py"):
+            result.append(fn.decode("utf8"))
 
     return result
 
