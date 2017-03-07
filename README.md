@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/coldnight/modcov.svg?branch=master)](https://travis-ci.org/coldnight/modcov)
+[![Code Coverage](https://codecov.io/github/coldnight/modcov/coverage.svg?branch=master)](https://codecov.io/gh/coldnight/modcov)
 
 modcov
 ======
