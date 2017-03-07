@@ -11,9 +11,9 @@ import subprocess
 import fnmatch
 
 try:
-    from cStringIO import StringIO
+    from cStringIO import StringIO  # pragma: no cover
 except ImportError:
-    from io import StringIO
+    from io import StringIO     # pragma: no cover
 
 import coverage
 
