@@ -1,0 +1,42 @@
+CHANGES
+=======
+
+v0.1.1
+------
+
+* Bump version: 0.1.0 → 0.1.1
+* fix
+* Bump version: 0.0.3 → 0.1.0
+* Add codecov badge
+* Add codecov
+* fix code coverage
+* Bump version: 0.0.2 → 0.0.3
+* Add python3 classifiers
+* fix
+* Fix travis python3.5 probomle
+* Default use python3.5 to fix travis remove python3.5 default
+* fix
+* Fix travis config
+* Add travis status image
+* Add travis
+* Fix python3 support
+* fix test
+* Add coverage config file
+* Fix pylint
+* Add python3 support
+* Add tests
+* Skip empty file
+* Fix output format
+* Fix console script exit code
+* Fix exclude module
+* fix
+* Bump version: 0.0.1 → 0.0.2
+* fix bumpversion config
+* Add bumpversion config file
+* Fix readme
+* fix typo
+* Add requirement & fix setup.cfg
+* Add README.md
+* Use return alternative exit in main
+* Add version & fix coverage not load
+* Initialize repo
