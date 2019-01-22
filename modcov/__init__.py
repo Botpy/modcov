@@ -17,7 +17,7 @@ except ImportError:
 
 import coverage
 
-__version__ = "0.0.3"
+__version__ = "0.1.0"
 
 
 def parse_cmd():
